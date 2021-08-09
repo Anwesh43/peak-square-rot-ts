@@ -38,7 +38,7 @@ class DrawingUtil {
         const sc1 : number = ScaleUtil.divideScale(scale, 0, parts)
         const sc2 : number = ScaleUtil.divideScale(scale, 1, parts)
         const sc3 : number = ScaleUtil.divideScale(scale, 2, parts)
-        const sc4 : number = ScaleUtil.divideScale(scale, 0, parts)
+        const sc4 : number = ScaleUtil.divideScale(scale, 3, parts)
         const size : number = Math.min(w, h) / sizeFactor 
         context.save()
         context.translate(w / 2 + (w / 2 + size) * sc4, h / 2)
@@ -49,7 +49,6 @@ class DrawingUtil {
             DrawingUtil.drawLine(context, -size / 2, 0, -size / 2, -size * 0.5 * (1 + j) * sc1)
             context.restore()
             context.save()
-            context.scale(1, 1 - 2 * j)
             DrawingUtil.drawLine(context, -size / 2, -(size * 0.5 * j), -size / 2 + size * sc2, -size * 0.5 * j * (1 + sc2))
             context.restore()
         }
