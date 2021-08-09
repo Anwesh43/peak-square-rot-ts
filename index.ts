@@ -204,3 +204,25 @@ class PeakSquareRot {
         this.curr.startUpdating(cb)
     }
 }
+
+class Renderer {
+
+    psr : PeakSquareRot = new PeakSquareRot()
+    animator : Animator = new Animator()
+
+    render(context : CanvasRenderingContext2D) {
+        this.psr.draw(context)
+    }
+
+    handleTap(cb : Function) {
+        this.psr.startUpdating(() => {
+            this.animator.start(() => {
+                cb()
+                this.psr.update(() => {
+                    this.animator.stop()
+                    cb()
+                })
+            })
+        })
+    }
+}
